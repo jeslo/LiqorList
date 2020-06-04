@@ -21,13 +21,22 @@ struct catagory: Decodable {
 }
 let firstJsonUrl = "http://www.mocky.io/v2/5ed7e5123200003def274d22"
 
-class ViewController: UIViewController,LiqorSelectDelegate {
-    
+class ViewController: UIViewController,LiqorSelectDelegate, UITableViewDelegate, UITableViewDataSource {
+    var liqor: [catagory] = []
+    @IBOutlet weak var liqorListTableView: UITableView!
     let networkCaller = LiqorSelectionViewController()
     func responseFromApi(responseData: Any) {
         do {
             let responseData = try JSONDecoder().decode(MainData.self, from: responseData as! Data)
-            print("response data>>>> \(responseData)")
+            
+            //print("response data>>>> \(responseData)")
+            self.liqor = responseData.data.list
+            DispatchQueue.main.async {
+                self.liqorListTableView.reloadData()
+            }
+            
+           
+            print(">>>>>>>>", liqor)
         } catch {
             print("paring error >>>>")
         }
@@ -37,24 +46,30 @@ class ViewController: UIViewController,LiqorSelectDelegate {
     override func viewDidLoad() {
         self.networkCaller.liqorDelegate = self
         super.viewDidLoad()
-//        self.LiqorView.delegate = self
-//        self.LiqorView.dataSource = self
+        self.liqorListTableView.delegate = self
+        self.liqorListTableView.dataSource = self
                 // Do any additional setup after loading the view.
         self.networkCaller.requestApiResponse(url: firstJsonUrl)
     }
 
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let Liqorcelldata = self.LiqorView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LiqorViewCell
-//        Liqorcelldata.liqorLabel.text = "RUM"
-//        return Liqorcelldata
-//    }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 70
-//    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return liqor.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let Liqorcelldata = self.liqorListTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LiqorViewCell
+        Liqorcelldata.liqorLabel.text = self.liqor[indexPath.row].id
+        return Liqorcelldata
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print(">>>>>>>>>>Haiiiiii")
+        let rumview = storyboard?.instantiateViewController(withIdentifier: "LiqorViewCell") as? LiqorViewCell
+        
+        
+    }
 }
 
 

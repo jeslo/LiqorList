@@ -29,18 +29,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ke-an-Nou">
-                                                    <rect key="frame" x="186" y="35" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ke-an-Nou">
+                                                    <rect key="frame" x="183" y="35" width="112" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="112" id="24o-21-gMn"/>
+                                                        <constraint firstAttribute="height" constant="22" id="nI4-wM-507"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6ke-an-Nou" firstAttribute="centerY" secondItem="ZId-vO-4Y8" secondAttribute="centerY" id="eE9-I6-qIB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6ke-an-Nou" secondAttribute="trailing" constant="99" id="ozu-BM-dC9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="LiqorViewCell" destination="ZId-vO-4Y8" id="fhS-q5-F4f"/>
-                                            <outlet property="liqorLabel" destination="6ke-an-Nou" id="FCb-eK-wUq"/>
+                                            <outlet property="LiqorViewCell" destination="ZId-vO-4Y8" id="Iuz-eg-dsn"/>
+                                            <outlet property="liqorLabel" destination="6ke-an-Nou" id="pec-K6-JEQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -55,10 +62,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="liqorListTableView" destination="SjB-a1-3vx" id="jI4-SN-Kd8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="-153"/>
+            <point key="canvasLocation" x="24.637681159420293" y="-153.34821428571428"/>
         </scene>
     </scenes>
 </document>
