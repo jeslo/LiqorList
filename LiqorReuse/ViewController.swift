@@ -7,21 +7,22 @@
 //
 
 import UIKit
-struct MainData: Decodable {
-    
-    let data: data
-}
-struct  data: Decodable {
-    let list:[catagory]
-    
-}
-struct catagory: Decodable {
-    let id:String
-    let url:String
-}
+
 let firstJsonUrl = "http://www.mocky.io/v2/5ed7e5123200003def274d22"
 
 class ViewController: UIViewController,LiqorSelectDelegate, UITableViewDelegate, UITableViewDataSource {
+    struct MainData: Decodable {
+        
+        let data: data
+    }
+    struct  data: Decodable {
+        let list:[catagory]
+        
+    }
+    struct catagory: Decodable {
+        let id:String
+        let url:String
+    }
     var liqor: [catagory] = []
     @IBOutlet weak var liqorListTableView: UITableView!
     let networkCaller = LiqorSelectionViewController()
@@ -42,13 +43,11 @@ class ViewController: UIViewController,LiqorSelectDelegate, UITableViewDelegate,
         }
     }
     
-//    weak var LiqorView: UITableView!
     override func viewDidLoad() {
         self.networkCaller.liqorDelegate = self
         super.viewDidLoad()
         self.liqorListTableView.delegate = self
         self.liqorListTableView.dataSource = self
-                // Do any additional setup after loading the view.
         self.networkCaller.requestApiResponse(url: firstJsonUrl)
     }
 
@@ -65,8 +64,15 @@ class ViewController: UIViewController,LiqorSelectDelegate, UITableViewDelegate,
         return 70
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let newurl = self.liqor[indexPath.row].url
+        let brandController =
+            self.storyboard?.instantiateViewController(withIdentifier: "DetailsOfLiqorViewController")
+                as! DetailsOfLiqorViewController
+        brandController.urlreceiver = newurl
+        self.navigationController?.pushViewController(brandController, animated: true)
         //print(">>>>>>>>>>Haiiiiii")
-        let rumview = storyboard?.instantiateViewController(withIdentifier: "LiqorViewCell") as? LiqorViewCell
+//        let rumview = storyboard?.instantiateViewController(withIdentifier: "LiqorViewCell") as? LiqorViewCell
         
         
     }
