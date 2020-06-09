@@ -8,13 +8,6 @@
 
 import UIKit
 
-struct DetailData: Decodable {
-    let success : Bool
-    let data: data
-}
-struct data : Decodable {
-    let list:[String]
-}
 class DetailsOfLiqorViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,LiqorSelectDelegate {
     
         
@@ -22,11 +15,9 @@ class DetailsOfLiqorViewController: UIViewController,UITableViewDataSource,UITab
     var brands: [String] = []
     func responseFromApi(responseData: Any) {
         do {
-            let responseData = try JSONDecoder().decode(DetailData.self, from: responseData as! Data)
-            
-            //print("response data>>>> \(responseData)")
-        self.brands = responseData.data.list
-            print("parsed data >>>>, \(responseData)")
+            let retrn = responseData as! BrandDataStruct
+            self.brands = retrn.data.list
+           
             DispatchQueue.main.async {
                 self.DetailedLiqorTableView.reloadData()
             }
@@ -44,7 +35,7 @@ class DetailsOfLiqorViewController: UIViewController,UITableViewDataSource,UITab
         self.DetailedLiqorTableView.delegate = self
         self.DetailedLiqorTableView.dataSource = self
         
-        self.detailscaller.requestApiResponse(url:urlreceiver)
+        self.detailscaller.requestApiResponse(url:urlreceiver, DataStruct:  BevQ.selectBrand)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,7 +44,7 @@ class DetailsOfLiqorViewController: UIViewController,UITableViewDataSource,UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let brandcelldetaildata = self.DetailedLiqorTableView.dequeueReusableCell(withIdentifier: "cellDetail", for: indexPath) as! DetailedLiqorTableViewCell
-        brandcelldetaildata.DetailedLiqorLabel.text = self.brands[indexPath.row]
+        brandcelldetaildata.DetailedLiqorLabel.text = brands[indexPath.row]
         return brandcelldetaildata
     }
     

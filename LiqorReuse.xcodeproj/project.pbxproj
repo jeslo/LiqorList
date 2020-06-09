@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D87C0898248A78C60097DC8A /* MainDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C0897248A78C60097DC8A /* MainDataStruct.swift */; };
+		D87C089A248A793F0097DC8A /* BrandDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C0899248A793F0097DC8A /* BrandDataStruct.swift */; };
 		D8E283F82488C5AF00363388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E283F72488C5AF00363388 /* AppDelegate.swift */; };
 		D8E283FA2488C5AF00363388 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E283F92488C5AF00363388 /* ViewController.swift */; };
 		D8E283FD2488C5AF00363388 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E283FB2488C5AF00363388 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D87C0897248A78C60097DC8A /* MainDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataStruct.swift; sourceTree = "<group>"; };
+		D87C0899248A793F0097DC8A /* BrandDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandDataStruct.swift; sourceTree = "<group>"; };
 		D8E283F42488C5AF00363388 /* LiqorReuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiqorReuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E283F72488C5AF00363388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8E283F92488C5AF00363388 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 			children = (
 				D8E283F72488C5AF00363388 /* AppDelegate.swift */,
 				D8E283F92488C5AF00363388 /* ViewController.swift */,
+				D87C0899248A793F0097DC8A /* BrandDataStruct.swift */,
+				D87C0897248A78C60097DC8A /* MainDataStruct.swift */,
 				D8E2840F2489587A00363388 /* DetailsOfLiqorViewController.swift */,
 				D8E2840D2488EFCF00363388 /* LiqorSelectionViewController.swift */,
 				D8E284092488C6EE00363388 /* LiqorViewCell.swift */,
@@ -149,8 +155,10 @@
 			files = (
 				D8E284102489587A00363388 /* DetailsOfLiqorViewController.swift in Sources */,
 				D8E283FA2488C5AF00363388 /* ViewController.swift in Sources */,
+				D87C0898248A78C60097DC8A /* MainDataStruct.swift in Sources */,
 				D8E28412248958C000363388 /* DetailedLiqorTableViewCell.swift in Sources */,
 				D8E283F82488C5AF00363388 /* AppDelegate.swift in Sources */,
+				D87C089A248A793F0097DC8A /* BrandDataStruct.swift in Sources */,
 				D8E2840A2488C6EE00363388 /* LiqorViewCell.swift in Sources */,
 				D8E2840E2488EFCF00363388 /* LiqorSelectionViewController.swift in Sources */,
 			);
